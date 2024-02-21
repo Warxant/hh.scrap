@@ -14,8 +14,9 @@ def chek_adv():
     soup = bs4.BeautifulSoup(hh_text, features='html.parser')
 
     job_advertisement = soup.find_all('div', 'vacancy-serp-item__layout')
-    time = 0
-    while time !=100: 
+  
+    counter = 0
+    while counter !=100: 
         for adv in job_advertisement:
             header = adv.find('a', class_='bloko-link').text.strip()
             link = adv.find('a')['href']
@@ -37,11 +38,11 @@ def chek_adv():
                                         'Компания': company_name,
                                         'Город': city
                                         })
-            time+=1    
+            counter+=1    
     return all_adv
 
 
-chek_adv()
+
 
 def json_w():
     chek_adv()
